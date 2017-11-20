@@ -74,6 +74,13 @@ for i in range(20000):
     if i % 100 == 0:
         train_accuacy = accuracy.eval(feed_dict={x: batch[0], y_: batch[1], keep_prob: 1.0})
         print("step %d, training accuracy %g"%(i, train_accuacy))
+        print(sess.run(x, feed_dict = {x: batch[0]}).shape)
+        print(sess.run(x_image, feed_dict = {x: batch[0]}).shape)
+        print(sess.run(h_conv1, feed_dict = {x: batch[0]}).shape)
+        print(sess.run(h_pool1, feed_dict = {x: batch[0]}).shape)
+        print(sess.run(h_conv2, feed_dict = {x: batch[0]}).shape)
+        print(sess.run(h_pool2, feed_dict = {x: batch[0]}).shape)
+        print(sess.run(y_conv, feed_dict = {x: batch[0], keep_prob: 0.5}).shape)
     train_step.run(feed_dict = {x: batch[0], y_: batch[1], keep_prob: 0.5})
 
 # accuacy on test
